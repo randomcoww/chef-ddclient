@@ -1,4 +1,4 @@
-module ConfigGenerator
+module Ddclient
   CONFIG_PATH ||= '/etc/ddclient.conf'
 
   ## sample source config

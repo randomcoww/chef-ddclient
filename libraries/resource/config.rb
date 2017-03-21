@@ -1,7 +1,7 @@
 class ChefDdclient
   class Resource
     class Config < Chef::Resource
-      include ConfigGenerator
+      include Ddclient
 
       resource_name :ddclient_config
 
@@ -11,11 +11,8 @@ class ChefDdclient
       property :exists, [TrueClass, FalseClass]
       property :config, Hash
       property :content, String, default: lazy { to_conf }
-      property :path, String
-
-      def provider
-        ChefDdclient::Provider::Config
-      end
+      property :path, String, desired_state: false,
+                              default: lazy { Ddclient::CONFIG_PATH }
 
       private
 
