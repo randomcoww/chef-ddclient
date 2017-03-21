@@ -21,10 +21,8 @@ module Ddclient
       case v
       when String,Integer
         out << [k, v].join('=')
-      else
-        if v.blank?
-          out << k
-        end
+      when NilClass
+        out << k
       end
     end
     return out.join($/)
