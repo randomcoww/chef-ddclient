@@ -1,7 +1,7 @@
 class ChefDdclient
   class Resource
     class Config < Chef::Resource
-      include Ddclient
+      include DdclientHelper
 
       resource_name :ddclient_config
 
@@ -17,7 +17,7 @@ class ChefDdclient
       private
 
       def to_conf
-        generate_config(config)
+        ConfigGenerator.generate_from_hash(config)
       end
     end
   end
